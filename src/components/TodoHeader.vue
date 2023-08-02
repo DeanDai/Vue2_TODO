@@ -16,8 +16,8 @@
                 title: ''
             }
         },
-        // Receive the function from parent componenet: App.vue
-        props: ['addtodo'],
+        // 1. Use props to receive the function from parent componenet: App.vue
+        // props: ['addtodo'],
         methods: {
             // This function name can't be same as the 'addtodo' function name
             // All the data which set by [data, props, methods and computed] can't be identical as they are in the same vc instance
@@ -30,9 +30,13 @@
                     title: this.title,
                     done: false
                 }
-                // Fire the function in App.vue to send data from child component to parent
-                // Notift App.vue to add a new todo object
-                this.addtodo(todo);
+                // 1. Fire the function in App.vue to send data from child component to parent
+                // Notify App.vue to add a new todo object
+                // this.addtodo(todo);
+
+                // 2. In App.vue, we use @ to convert addtodo as a custom event
+                // It means we need to use this.$emit to trigger the custom event
+                this.$emit('addtodo', todo);
                 // Clear the title to reset the input
                 this.title = '';
             }

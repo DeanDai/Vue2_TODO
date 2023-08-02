@@ -15,7 +15,7 @@
     export default {
         name: 'TodoFooter',
         // Receive the function from parent componenet: App.vue
-        props: ['todos', 'checkAllTodo', 'clearAllDone'],
+        props: ['todos'],
         computed: {
             total () {
                 return this.todos.length;
@@ -33,7 +33,10 @@
                     return (this.total === this.donetotal) && (this.total > 0);
                 },
                 set(value) {
-                    this.checkAllTodo(value);
+                    // 1. Fire the callback function directly with value
+                    // this.checkAllTodo(value);
+                    // 2. Use $emit to fire custom event with parameter
+                    this.$emit('checkAllTodo', value);
                 }
             }
         },
@@ -42,7 +45,10 @@
             //     this.checkAllTodo(e.target.checked)
             // }
             clearAllCompleted() {
-                this.clearAllDone()
+                // 1. Fire the callback function directly
+                // this.clearAllDone();
+                // 2. Use $emit to fire custom event with parameter
+                this.$emit('clearAllDone');
             }
         }
     }

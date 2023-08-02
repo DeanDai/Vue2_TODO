@@ -4,13 +4,19 @@
       <div class="todo-wrap">
         <h1 class="todo-header">My Todos</h1>
         <!-- Todo Header -->
-        <!-- Pass function to child component -->
-        <TodoHeader :addtodo="addtodo"/>
+        <!-- 1. Pass function to child component -->
+        <!-- <TodoHeader :addtodo="addtodo"/> -->
+        <!-- 2. Use @ to convert addtodo as a custom event -->
+        <TodoHeader @addtodo="addtodo"/>
         <!-- Todo List -->
         <!-- Pass array to child component -->
+        <!-- 1. Pass functions toggletodo and deletetodo to child component -->
         <TodoList :todos="todos" :toggletodo="toggletodo" :deletetodo="deletetodo"/>
         <!-- Todo Footer -->
-        <TodoFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllDone="clearAllDone"/>
+        <!-- 1. Pass functions checkAllTodo and clearAllDone to child component -->
+        <!-- <TodoFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllDone="clearAllDone"/> -->
+        <!-- 2. Use @ to convert addtodo as a custom event -->
+        <TodoFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllDone="clearAllDone"/>
       </div>
     </div>
   </div>
