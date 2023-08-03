@@ -2,7 +2,7 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <h1 class="todo-header">My Todos</h1>
+        <h1 style="text-align:center">My Todos</h1>
         <!-- Todo Header -->
         <!-- 1. Pass function to child component -->
         <!-- <TodoHeader :addtodo="addtodo"/> -->
@@ -126,7 +126,7 @@ export default {
   }
 
   .todo-container {
-    width: 600px;
+    max-width: 38em;
     margin: 0 auto;
   }
 

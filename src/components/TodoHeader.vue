@@ -45,8 +45,11 @@
 </script>
 
 <style scoped>
+    .todo-header {
+        display: flex;
+    }
     .todo-header input {
-        width: 560px;
+        flex:1;
         height: 28px;
         font-size: 14px;
         border: 1px solid #ccc;

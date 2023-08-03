@@ -56,10 +56,8 @@
 
 <style scoped>
     .todo-footer {
-        height: 40px;
-        line-height: 40px;
         padding-left: 6px;
-        margin-top: 5px;
+        overflow: hidden;
     }
 
     .todo-footer label {
@@ -77,6 +75,5 @@
 
     .todo-footer button {
         float: right;
-        margin-top: 5px;
     }
 </style>
