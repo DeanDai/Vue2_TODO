@@ -11,7 +11,8 @@
         <!-- Todo List -->
         <!-- Pass array to child component -->
         <!-- 1. Pass functions toggletodo and deletetodo to child component -->
-        <TodoList :todos="todos" :toggletodo="toggletodo" :deletetodo="deletetodo"/>
+        <!-- 2. No need to pass toggletodo and deletetodo, use global event bus instead -->
+        <TodoList :todos="todos"/>
         <!-- Todo Footer -->
         <!-- 1. Pass functions checkAllTodo and clearAllDone to child component -->
         <!-- <TodoFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllDone="clearAllDone"/> -->
@@ -77,6 +78,16 @@ export default {
         localStorage.setItem('todos', JSON.stringify(value));
       }
     }
+  },
+  // As App.vue receives the data from TodoItem.vue, so we bind the global event bus on mounted life cycle hook
+  mounted () {
+    this.$bus.$on('toggletodo', this.toggletodo);
+    this.$bus.$on('deletetodo', this.deletetodo);
+  },
+  // Unbind the global event bus
+  beforeDestroy() {
+    this.$bus.$off('toggletodo');
+    this.$bus.$off('deletetodo');
   }
 }
 </script>

@@ -5,4 +5,8 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  beforeCreate () {
+    // Install global event bus
+    Vue.prototype.$bus = this;
+  }
 }).$mount('#app')

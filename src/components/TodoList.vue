@@ -6,8 +6,6 @@
             :todo="todo" 
             v-for="todo in todos" 
             :key="todo.id" 
-            :toggletodo="toggletodo"
-            :deletetodo="deletetodo"
         />
     </div>
 </template>
@@ -17,8 +15,10 @@
     export default {
         name: 'TodoList',
         components: {TodoItem},
-        // Use 'props' to receive the todo item object from parent component: App.vue
-        props: ['todos', 'toggletodo', 'deletetodo'],
+        // 1. Use 'props' to receive the todo item object from parent component: App.vue
+        // props: ['todos', 'toggletodo', 'deletetodo'],
+        // 2. Remove the 'toggletodo', 'deletetodo' from props as we are using global event bus
+        props: ['todos'],
     }
 </script>
 

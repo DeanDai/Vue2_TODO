@@ -12,16 +12,23 @@
 <script>
     export default {
         name: 'TodoItem',
-        // Use 'props' to receive the todo item object from parent component: TodoList.vue
-        props: ['todo', 'toggletodo', 'deletetodo'],
+        // 1. Use 'props' to receive the todo item object from parent component: TodoList.vue
+        // props: ['todo', 'toggletodo', 'deletetodo'],
+        // 2. Remove 'toggletodo', 'deletetodo' as we don't get it from parent component. We use global event bus now
+        props: ['todo'],
         methods: {
             statuschange(id) {
-                // Notify the App.vue to update the 'done' by the status of current checkbox
-                this.toggletodo(id);
+                // 1. Notify the App.vue to update the 'done' by the status of current checkbox
+                // this.toggletodo(id);
+                // 2. Use global event bus to trigger the binded event in App.vue
+                this.$bus.$emit('toggletodo', id);
             },
             tododelete(id) {
                 if (confirm('Are you sure?')) {
-                    this.deletetodo(id);
+                    // 1. Notify the App.vue to delete the todo item
+                    // this.deletetodo(id);
+                    // 2. Use global event bus to trigger the binded event in App.vue
+                    this.$bus.$emit('deletetodo', id);
                 }
             }
         }
